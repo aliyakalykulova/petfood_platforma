@@ -60,7 +60,9 @@ services:
       - pets_network
 
   recommender-api:
-    image: 10.1.14.25:5050/petnutrients/nutrient-recommender:latest
+    build:
+      context: ./services/nutrient-recommender
+      dockerfile: Dockerfile
     container_name: recommender_api_ctn
     restart: unless-stopped
     ports:
@@ -71,7 +73,9 @@ services:
       - pets_network
 
   auth-service:
-    image: 10.1.14.25:5050/petnutrients/backend/auth-service:latest
+    build:
+      context: ./services/auth
+      dockerfile: Dockerfile  
     container_name: pets_auth_ctn
     restart: unless-stopped
     depends_on:
@@ -129,7 +133,9 @@ services:
       - pets_network
 
   account-service:
-    image: 10.1.14.25:5050/petnutrients/backend/account-service:latest
+    build:
+      context: ./services/account
+      dockerfile: Dockerfile
     container_name: pets_account_ctn
     restart: unless-stopped
 
@@ -162,7 +168,9 @@ services:
       - pets_network
 
   notifications-service:
-    image: 10.1.14.25:5050/petnutrients/backend/notifications-service:latest
+    build:
+      context: ./services/pets
+      dockerfile: Dockerfile
     container_name: pets_notifications_ctn
     restart: unless-stopped
     depends_on:
@@ -183,7 +191,9 @@ services:
       - pets_network
 
   gateway-service:
-    image: 10.1.14.25:5050/petnutrients/backend/gateway-service:latest 
+    build:
+      context: ./services/gateway
+      dockerfile: Dockerfile 
     container_name: pets_gateway_ctn
     restart: unless-stopped
     depends_on:
